@@ -1,17 +1,11 @@
-// index.ts
+
 import { parseDiceArgs } from './validator';
 import { Dice } from './dice';
-import { fairRandom } from './fairrandom';
-import readline from 'readline';
+import { fairRandom } from './fairRandom';
+import { rl, prompt } from './readLine'; 
+import { gameLoop } from './game';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
-function prompt(question: string): Promise<string> {
-  return new Promise((resolve) => rl.question(question, resolve));
-}
 
 async function main() {
   try {
@@ -27,8 +21,7 @@ async function main() {
     console.log(`You picked: ${userNum}`);
     console.log(`Computer picked (revealed): ${computerNum}`);
     console.log(`Result of XOR: ${result} → ${result % 2 === 0 ? "You start!" : "Computer starts!"}`);
-
-    // CLI menu loop...
+    await gameLoop(diceList);
     rl.close();
   } catch (err) {
     console.error("\nError:", (err as Error).message);
