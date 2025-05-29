@@ -6,6 +6,19 @@ Play against the computer, make strategic decisions, and test your luck!
 
 ## 🖥 Demo
 
+=== Dice Win Probabilities ===
+
+        | D1   D2   D3
+    ---------------------
+     D1 |  -  66%  33%
+     D2 | 33%   -  66%
+     D3 | 66%  33%   -
+
+Each cell shows the win rate of the row dice against the column dice.
+For example, D2 wins against D3 in 66% of rolls.
+
+
+
 ```bash
 $ ts-node index.ts 4,4,4,4,4,4 3,3,3,3,6,6 2,2,2,5,5,5
 Welcome to the Non-Transitive Dice Game!
